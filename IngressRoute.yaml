@@ -1,15 +1,16 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
- name: simpleingressroute
- namespace: default
+  name: ingressroute-wordpress
+  namespace: wordpress
 spec:
- entryPoints:
- - web
- routes:
- - match: Host(`your.domain.com`) &&
-PathPrefix(`/notls`)
- kind: Rule
- services:
- - name: wordpress
- port: 80
+  entryPoints:
+    - websecure
+  routes:
+  - kind: Rule
+    match: Host(`web.etna.student`)
+    services:
+    - name: wordpress
+      port: 80
+  tls:
+    secretName: tls-secret
