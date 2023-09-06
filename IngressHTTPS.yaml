@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wordpress-ingress-https
+  namespace: wordpress
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: true
+    traefik.ingress.kubernetes.io/service.serversscheme: https
+
+spec:
+  rules:
+  - host: web.etna.student.local
+    http:
+      paths:
+      - path: /
+        pathType: Exact
+        backend:
+          service:
+            name: wordpress
+            port:
+              number: 80
+  # Only selects which certificate(s) should be loaded from the secret, in order to terminate TLS.
+  # Doesn't enable TLS for that ingress (hence for the underlying router).
+  # Please see the TLS annotations on ingress made for that purpose.
+  tls:
+  - secretName: tls-secret

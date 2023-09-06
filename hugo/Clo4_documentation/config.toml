@@ -1,0 +1,4 @@
+baseURL = 'https://rendu-git.etna-alternance.net/module-9402/activity-50907/group-1009361.git'
+languageCode = "en-us"
+title = "Clo4 Documentation"
+theme="blackburn"
