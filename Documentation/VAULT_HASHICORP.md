@@ -14,7 +14,7 @@ Ajoutons les dépôts Helm, afin d'accéder aux manifestes Kubernetes.
 helm repo add hashicorp https://helm.releases.hashicorp.com
 ```
 
-installé Vault:
+install Vault:
 
 ```
 helm search repo hashicorp/vault
@@ -39,12 +39,14 @@ sudo kubectl get po
 	 `vault secrets enable database`
 	 
 2. Configure Vault with the proper plugin and connection information:
-	`vault write database/config/my-mysql-database \
-    `plugin_name=mysql-database-plugin \
-    `connection_url="{{username}}:{{password}}@tcp(10.42.2.68:3306)/" \
-    `allowed_roles="*" \
-    `username="root" \
-    `password="pass123"
+	````
+	vault write database/config/my-mysql-database \
+    plugin_name=mysql-database-plugin \
+    connection_url="{{username}}:{{password}}@tcp(10.42.2.68:3306)/" \
+    allowed_roles="*" \
+    username="root" \
+    password="pass123"
+``
     
 3. Rotation Pass
 	 ``vault write -force database/rotate-root/my-mysql-database

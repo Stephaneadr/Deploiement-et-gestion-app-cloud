@@ -30,7 +30,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: test
+            name: wordpress
             port:
               number: 80
 ---

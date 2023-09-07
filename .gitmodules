@@ -1,0 +1,3 @@
+[submodule "hugo/Clo4_documentation/themes/ananke"]
+	path = hugo/Clo4_documentation/themes/ananke
+	url = https://github.com/theNewDynamic/gohugo-theme-ananke.git
